@@ -12,18 +12,8 @@ import ujson as json
 from yahoo_fin import stock_info as si
 import requests
 import pandas as pd
+from api_keys import CONSUMER_KEYS
 
-CONSUMER_KEYS = ['UCJA7GWHIKKXO2G69GXDMEFUX24QZ0PD',
-                 'NJVFPDOUVIVOCGLTOETENI5WOLKWBJ3B',
-                 'I346SQV6CXH5FEQ2I8HCZNFH2Z556AH4',
-                 'GQ4MAKWOMBSGGRJ91RNZEE6THVGRJAJD',
-                 'HWO3NCQY5YB9TESIGPKPIICIKV0CKSYF',
-                 'XWNWIEGUKAGUYBJ1AILZZTGGRIOS7RRV',
-                 'WQKJUI07MWEVTAII5FDXUBLVNFPKMOAG',
-                 'S2D28UJPGEOFKEN5FA9PKXLTPAQG0VEF',
-                 'LMRHF8LMP3EA5N64WTOL0OFPOGDPKNVF',
-                 'U3HWMIJOUAROHJFAIG4WTZUDS833TVUG',
-                 'IUNOMMPZT5ESPREYGDIPUJ6TYYFGXNFZ']
 KEY = CONSUMER_KEYS[0]
 PROCESSES_TO_USE = len(CONSUMER_KEYS)
 PROGRESS_BAR = tqdm(range(int(11000 / PROCESSES_TO_USE)))
@@ -208,7 +198,7 @@ class TdPriceHistory():
         that is not already in the file but is in the data parameter.
         Otherwise, creates the file first, then writes data to it.
         '''
-        filename = './data/' + str(frequency_type) + '/' + str(ticker).lower() + '.json'
+        filename = '/Volumes/MICROSD/data/' + str(frequency_type) + '/' + str(ticker).lower() + '.json'
 
         try:
             file = open(filename, encoding='utf-8', mode='r')
