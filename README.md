@@ -4,7 +4,7 @@ Python routine to aggregate by-the-minute open, close, high, and low data from t
 ## Table of Contents
 * [Purpose](https://github.com/mglush/data-aggregation/edit/main/README.md#purpose)
 * [Files](https://github.com/mglush/data-aggregation/edit/main/README.md#files)
-* [How to Run](https://github.com/mglush/data-aggregation/edit/main/README.md#how-to-run)
+* [Use In Your Project](https://github.com/mglush/data-aggregation/edit/main/README.md#use-in-your-project)
 * [Technologies](https://github.com/mglush/data-aggregation/edit/main/README.mdtechnologies)
 * [Sources](https://github.com/mglush/data-aggregation/edit/main/README.md#sources)
 
@@ -18,8 +18,12 @@ While the files contain self-explanatory code, this section briefly summarizes t
 2. [data_mining/parallel_gen_data.py](https://github.com/glush-n-charles/market-analysis/blob/main/data_mining/parallel_gen_data.py)
 * This file uses the class mentioned above, and is directly run whenever one would like to update their file-system with any new data that might've been recorded by the TD Ameritrade API since the files were last interracted with.
 
-## How to Run
-WRITE SOMETHING
+## Use In Your Project
+You can import the TdPriceHistory class from the td_price_history.py file for use in your projects with the usual
+```
+from td_price_history import TdPriceHistory
+```
+command. Do insert your own API keys so that it works properly.
 
 ## Technologies
 * TD Ameritrade API.
@@ -29,5 +33,3 @@ WRITE SOMETHING
 ## Sources
 * [Umap How To](https://umap-learn.readthedocs.io/en/latest/index.html)
 * [Yahoo Finance How To](https://levelup.gitconnected.com/how-to-get-all-stock-symbols-a73925c16a1b)
-
-2022 &copy; Michael Glushchenko
