@@ -1,2 +1,33 @@
-# data-aggregation
-Python routine to aggregate financial data from the TD Ameritrade API into structured JSON files.
+# Financial Data Aggregation Tool
+Python routine to aggregate by-the-minute open, close, high, and low data from the TD Ameritrade API into structured JSON files.
+
+## Table of Contents
+* [Purpose](https://github.com/mglush/data-aggregation/edit/main/README.md#purpose)
+* [Files](https://github.com/mglush/data-aggregation/edit/main/README.md#files)
+* [How to Run](https://github.com/mglush/data-aggregation/edit/main/README.md#how-to-run)
+* [Technologies](https://github.com/mglush/data-aggregation/edit/main/README.mdtechnologies)
+* [Sources](https://github.com/mglush/data-aggregation/edit/main/README.md#sources)
+
+## Purpose
+In order to bypass the idea of paying for financial data, I wrote this routine to scrape the public TD Ameritrade API so that I can have by-the-minute data for use in my data science projects. I plan to rewrite the routine in MicroPython so that I can put it on my Raspberry Pi Pico.
+
+## Files
+While the files contain self-explanatory code, this section briefly summarizes the purpose of each file.
+1. [data_mining/td_price_history.py](https://github.com/glush-n-charles/market-analysis/blob/main/data_mining/td_price_history.py)
+* This class was written to interract with the TD Ameritrade API. It contains methods that could be helpful in pulling the price history of a single stock, a group of stocks given a list, or to pull the price history of all the stocks available on there (excluding small OTC symbols). This file should be used as an import, and was only directly run at the very beginning of this project in order to set up all the files.
+2. [data_mining/parallel_gen_data.py](https://github.com/glush-n-charles/market-analysis/blob/main/data_mining/parallel_gen_data.py)
+* This file uses the class mentioned above, and is directly run whenever one would like to update their file-system with any new data that might've been recorded by the TD Ameritrade API since the files were last interracted with.
+
+## How to Run
+WRITE SOMETHING
+
+## Technologies
+* TD Ameritrade API.
+* Yahoo Finance API.
+* Python (libraries include *requests*, *json*, *ijson*, *datetime*, *pandas*, *umap*, *matplotlib*, *multiprocessing*).
+
+## Sources
+* [Umap How To](https://umap-learn.readthedocs.io/en/latest/index.html)
+* [Yahoo Finance How To](https://levelup.gitconnected.com/how-to-get-all-stock-symbols-a73925c16a1b)
+
+2022 &copy; Michael Glushchenko
