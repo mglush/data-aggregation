@@ -13,9 +13,9 @@ In order to bypass the idea of paying for financial data, I wrote this routine t
 
 ## Files
 While the files contain self-explanatory code, this section briefly summarizes the purpose of each file.
-1. [data_mining/td_price_history.py](https://github.com/glush-n-charles/market-analysis/blob/main/data_mining/td_price_history.py)
+1. [data_mining/td_price_history.py](https://github.com/data-aggregation/blob/main/td_price_history.py)
 * This class was written to interract with the TD Ameritrade API. It contains methods that could be helpful in pulling the price history of a single stock, a group of stocks given a list, or to pull the price history of all the stocks available on there (excluding small OTC symbols). This file should be used as an import, and was only directly run at the very beginning of this project in order to set up all the files.
-2. [data_mining/parallel_gen_data.py](https://github.com/glush-n-charles/market-analysis/blob/main/data_mining/parallel_gen_data.py)
+2. [data_mining/parallel_gen_data.py](https://github.com/data-aggregation/blob/main/parallel_gen_data.py)
 * This file uses the class mentioned above, and is directly run whenever one would like to update their file-system with any new data that might've been recorded by the TD Ameritrade API since the files were last interracted with.
 
 ## Use In Your Project
