@@ -198,40 +198,34 @@ class TdPriceHistory():
         Otherwise, creates the file first, then writes data to it.
         '''
         filename = '/Volumes/MICROSD/data/' + str(frequency_type) + '/' + str(ticker).lower() + '.json'
+        data = []
+        last_date = None
 
         try:
             file = open(filename, encoding='utf-8', mode='r')
             data = json.load(file)
             file.close()
+            
+            testing = self.get_ticker(ticker, period_type, period, frequency_type, frequency, key)
+            
+            last_date = datetime.strptime(data[-1]['datetime'], "%Y-%m-%d %H:%M:%S") if len(data) > 0 else datetime.strptime("1900-01-01 00:00:00", "%Y-%m-%d %H:%M:%S")
+
+            if testing is not None:
+                testing = testing['candles']
+                for item in testing:
+                    if item is not None and datetime.strptime(item['datetime'], "%Y-%m-%d %H:%M:%S") > last_date:
+                        data.append(item)
+
             try:
-                old_dates = set(item['datetime'] for item in data)
-            except TypeError:
-                self.change_file_format(str(ticker).lower() + '.json', str(frequency_type))
-                file = open(filename, encoding='utf-8', mode='r')
-                data = json.load(file)
+                file = open(filename, encoding='utf-8', mode='w')
+                json.dump(data, file, indent=4)
                 file.close()
-                old_dates = set(item['datetime'] for item in data) if data is not None else set()
+            except OSError:
+                print('\n>>>FAILED TO WRITE TO FILE.')
+
+            PROGRESS_BAR.update()
         except OSError:
             print(f'\n>>>FILE {ticker}.json DID NOT PREVIOUSLY EXIST... CREATING NEW ONE.')
-            data = []
-            old_dates = set()
-
-        testing = self.get_ticker(ticker, period_type, period, frequency_type, frequency, key)
-
-        if testing is not None:
-            testing = testing['candles']
-            for item in testing:
-                if item is not None and item['datetime'] not in old_dates:
-                    data.append(item)
-
-        try:
-            file = open(filename, encoding='utf-8', mode='w')
-            data = json.dump(data, file, indent=4)
-            file.close()
-        except OSError:
-            print('\n>>>FAILED TO WRITE TO FILE.')
-
-        PROGRESS_BAR.update()
 
     def update_files(self, period_type, period, frequency_type, frequency):
         '''
