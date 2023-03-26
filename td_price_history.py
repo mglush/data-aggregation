@@ -69,15 +69,14 @@ class TdPriceHistory():
         '''
         try:
             page = requests.get(url=endpoint, params=params)
+            if page.status_code == 200:
+                return json.loads(page.content)
+
+            if page.status_code == 429:
+                time.sleep(1)
+                return self.get_endpoint_data(endpoint, params)
         except requests.RequestException as request_exception:
             print(request_exception)
-
-        if page.status_code == 200:
-            return json.loads(page.content)
-
-        if page.status_code == 429:
-            time.sleep(1)
-            return self.get_endpoint_data(endpoint, params)
 
         print(f'>>>BAD REQUEST ERROR FROM {str(endpoint)}.\nPAGE STATUS = {str(page.status_code)}')
         return None
