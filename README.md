@@ -14,9 +14,9 @@ In order to bypass the idea of paying for financial data, I wrote this routine t
 ## Files
 While the files contain self-explanatory code, this section briefly summarizes the purpose of each file.
 1. [data_mining/td_price_history.py](https://github.com/data-aggregation/blob/main/td_price_history.py)
-* This class was written to interract with the TD Ameritrade API. It contains methods that could be helpful in pulling the price history of a single stock, a group of stocks given a list, or to pull the price history of all the stocks available on there (excluding small OTC symbols). This file should be used as an import, and was only directly run at the very beginning of this project in order to set up all the files.
+* This class was written to interract with the TD Ameritrade API. It contains methods that could be helpful in pulling the price history of a single stock, a group of stocks given a list, or to pull the price history of all the stocks available on there (excluding small OTC symbols). This file should be used as an import.
 2. [data_mining/parallel_gen_data.py](https://github.com/data-aggregation/blob/main/parallel_gen_data.py)
-* This file uses the class mentioned above, and is directly run whenever one would like to update their file-system with any new data that might've been recorded by the TD Ameritrade API since the files were last interracted with.
+* I use this file to run the TdPriceHistory class, get the latest 10 days of data I need, and append it to the end of each tickers JSON file.
 
 ## Use In Your Project
 You can import the TdPriceHistory class from the td_price_history.py file for use in your projects with the usual
